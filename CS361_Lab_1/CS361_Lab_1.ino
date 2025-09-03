@@ -102,7 +102,7 @@ void loop() {
   // 2ND EVENT: check if we passed the 3 second interval
   if (millis() >= period2 + time2) {
 
-    // if the LED hasn't been switched 5 times or blinking 3 times total ie.on,off,on,off,on
+    // if the LED hasn't blinked 3 times total
     if (switchCount < 5) {
 
       /*
