@@ -28,7 +28,7 @@ void loop() {
       digitalWrite(twelvePin, !digitalRead(twelvePin));
       digitalWrite(tenPin, !digitalRead(tenPin));
     }
-    else if (digitalRead(twoPin) == HIGH){
+    else if (digitalRead(tenPin) == HIGH){
       digitalWrite(tenPin, !digitalRead(tenPin));
       digitalWrite(thirteenPin, !digitalRead(thirteenPin));
     }
