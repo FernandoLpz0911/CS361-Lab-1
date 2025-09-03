@@ -1,15 +1,19 @@
 /*
-Lab Number: 1
+Lab Title and Number: Three Blinking Lights, Lab 1
 Name: Fernando Lopez
 UIN: 672 257 146
 Description: Blinks 4 LED's in total. One event begins with the onboard LED, then red
              LED, then green LED every second. The second event is for the blue lED,
-             it blinks
+             it blinks every 1.5 seconds a total of 3 times. This lab introduces the
+             student to Arduino programming and basic circuitry including the use of
+             resistors, negative and positive terminals, and arduino pins.
+Assumptions: Use of an Arduino R4, breadboard, 3 220ohm resistors, 1 blue LED,
+             1 red LED, 1 green LED, and wires to connect between the arduino
+             and the breadboard
 
-This lab introduces the student to Arduino programming and basic circuitry
-             including the use of resistors, negative and positive terminals, and pins.
-Assumptions:
 References:
+https://forum.arduino.cc/t/using-millis-for-timing-a-beginners-guide/483573
+https://docs.arduino.cc/built-in-examples/digital/BlinkWithoutDelay/
 */
 
 
@@ -34,7 +38,10 @@ const byte thirteenPin = 13; // ONBOARD LED
 // timers for the two events
 unsigned long time1 = 0;
 unsigned long time2 = 0;
-unsigned long time3 = 0;
+
+/* dictates state from 0,1,2,0,1,2,etc with board LED,
+ * red LED, green LED, board LED, red LED, green LED,etc    */
+int currState = 0;
 
 void setup() {
 
@@ -44,11 +51,14 @@ void setup() {
   pinMode(twelvePin, OUTPUT);
   pinMode(thirteenPin, OUTPUT);
 
-  // starts off all the pins on LOW voltage, practically off.
+  // starts off almost all of the pins on LOW voltage, practically off.
   digitalWrite(twoPin, LOW);
   digitalWrite(tenPin, LOW);
   digitalWrite(twelvePin, LOW);
-  digitalWrite(thirteenPin, LOW);
+
+  // start the sequence by flipping the onboard LED on
+  digitalWrite(thirteenPin, HIGH);
+  currState++;
 
 }
  
@@ -56,33 +66,32 @@ void loop() {
   
   // check if the 1 second time period passed
   if (millis() >= period + time1) {
-    // if the onboard LED is on
-    if (digitalRead(thirteenPin) == HIGH) {
+    
+    // 
+    if (currState == 1) {
 
       // flip onboard off and flip red LED on
        digitalWrite(thirteenPin, !digitalRead(thirteenPin));
        digitalWrite(twelvePin, !digitalRead(twelvePin));
+       currState++;
     }
     
     // if red LED on
-    else if (digitalRead(twelvePin) == HIGH) {
+    else if (currState == 2) {
 
       // flip red LED off, flip green LED on
       digitalWrite(twelvePin, !digitalRead(twelvePin));
       digitalWrite(tenPin, !digitalRead(tenPin));
+      currState++;
     }
 
     // if green LED on
-    else if (digitalRead(tenPin) == HIGH){
+    else if (currState == 3){
 
       // flip green LED off, onboard LED on
       digitalWrite(tenPin, !digitalRead(tenPin));
       digitalWrite(thirteenPin, !digitalRead(thirteenPin));
-    }
-
-    // start the sequence by flipping the onboard LED on
-    else {
-      digitalWrite(thirteenPin, !digitalRead(thirteenPin));
+      currState = 1;
     }
 
     // reset the timer
