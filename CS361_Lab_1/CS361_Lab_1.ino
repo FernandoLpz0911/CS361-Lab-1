@@ -1,6 +1,7 @@
 const unsigned long period = 1000; // number of milliseconds
 
 const byte twoPin = 2;
+const byte tenPin = 10;
 const byte twelvePin = 12;
 const byte thirteenPin = 13;
 
@@ -8,6 +9,7 @@ unsigned long time1 = 0;
 
 void setup() {
   pinMode(twoPin, OUTPUT);
+  pinMode(tenPin, OUTPUT);
   pinMode(twelvePin, OUTPUT);
   pinMode(thirteenPin, OUTPUT);
 }
@@ -22,10 +24,10 @@ void loop() {
     }
     else if (digitalRead(twelvePin) == HIGH) {
       digitalWrite(twelvePin, !digitalRead(twelvePin));
-      digitalWrite(twoPin, !digitalRead(twoPin));
+      digitalWrite(tenPin, !digitalRead(tenPin));
     }
     else if (digitalRead(twoPin) == HIGH){
-      digitalWrite(twoPin, !digitalRead(twoPin));
+      digitalWrite(tenPin, !digitalRead(tenPin));
       digitalWrite(thirteenPin, !digitalRead(thirteenPin));
     }
     else {
