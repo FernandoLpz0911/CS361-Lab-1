@@ -3,10 +3,10 @@ const unsigned long period = 1000;
 const unsigned long period2 = 2000; 
 
 // Named the pins for more intuitive reference
-const byte twoPin = 2;
-const byte tenPin = 10;
-const byte twelvePin = 12;
-const byte thirteenPin = 13;
+const byte twoPin = 2; // BLUE LED
+const byte tenPin = 10; // GREEN LED
+const byte twelvePin = 12; // RED LED
+const byte thirteenPin = 13; // ONBOARD LED
 
 // timers for the two independent events
 unsigned long time1 = 0;
