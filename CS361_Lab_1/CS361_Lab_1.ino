@@ -37,10 +37,10 @@ void loop() {
     }
     time1 += period;
     
-    if (millis() >= period2 + time2) {
-      digitalWrite(twoPin, !digitalRead(twoPin));
-      time2 += period2;
-    }
+  }
+  if (millis() >= period2 + time2) {
+    digitalWrite(twoPin, !digitalRead(twoPin));
+    time2 += period2;
   }
   
 
