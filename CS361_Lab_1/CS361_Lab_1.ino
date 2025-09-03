@@ -1,5 +1,5 @@
 const unsigned long period = 1000; // number of milliseconds
-const unsigned long period2 = 2500; 
+const unsigned long period2 = 2000; 
 
 const byte twoPin = 2;
 const byte tenPin = 10;
