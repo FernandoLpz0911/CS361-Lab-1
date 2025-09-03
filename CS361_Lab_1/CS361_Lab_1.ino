@@ -35,12 +35,12 @@ void loop() {
     else {
       digitalWrite(thirteenPin, !digitalRead(thirteenPin));
     }
-    time1 += period;
+    time1 = millis();
     
   }
   if (millis() >= period2 + time2) {
     digitalWrite(twoPin, !digitalRead(twoPin));
-    time2 += period2;
+    time2 = millis();
   }
   
 
